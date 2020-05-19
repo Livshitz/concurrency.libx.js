@@ -1,6 +1,6 @@
 ![Node.js CI](https://github.com/Livshitz/promisify.libx.js/workflows/Node.js%20CI/badge.svg)
 
-# Promisify.libx.js
+# 💄 Promisify.libx.js
 > Create promises as an object to manually wrapper for non-promisified functions.
   
 While `util.promisify` is useful to convert callback-based functions to promisibable functions, `promisify.libx.js` is useful to manually manage `resolve` and `reject` operations.
