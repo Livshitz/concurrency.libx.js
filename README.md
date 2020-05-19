@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/Livshitz/promisify.libx.js/workflows/Node.js%20CI/badge.svg)
+
 # Promisify.libx.js
 Create promises manually and create manuall promise-like wrapper for non-promisified functions.
 
