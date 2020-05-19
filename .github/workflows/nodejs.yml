@@ -40,7 +40,7 @@ jobs:
         git config user.email "elya.livshitz@gmail.com"
         git config user.name "Elya Livshitz"
         yarn bump
-        git commit --amend -m "^ pkg bump [skip ci]"
+        # git commit --amend -m "^ pkg bump [skip ci]"
         git push origin 
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
