@@ -35,7 +35,13 @@ jobs:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
         scope: '@octocat' # Defaults to the user or organization that owns the workflow file:  
-    - run: yarn publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - run: yarn version --patch
+    - name: Publish
+        run: |
+          git config --global push.default simple
+          git config user.email "elya.livshitz@gmail.com"
+          git config user.name "Elya Livshitz"
+          yarn version --patch
+          git commit --amend -m "^ pkg bump [skip ci]"
+          git push origin 
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
