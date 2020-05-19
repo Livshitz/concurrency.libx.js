@@ -13,4 +13,5 @@ Create promises manually and create manuall promise-like wrapper for non-promisi
 > ``` $ yarn test ```
 
 ## Usage:
+Check [tests](tests/promisify.test.ts).
 
