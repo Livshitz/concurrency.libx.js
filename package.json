@@ -1,6 +1,6 @@
 {
     "name": "promisify.libx.js",
-    "version": "0.1.23",
+    "version": "0.1.24",
     "description": "Promises made easy",
     "main": "./build/index.js",
     "scripts": {
