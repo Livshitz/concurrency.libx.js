@@ -16,3 +16,4 @@ yarn.lock
 .tmp/
 config.json
 src/pads/queries
+.npmrc
