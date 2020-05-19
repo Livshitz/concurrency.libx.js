@@ -7,6 +7,8 @@ While `util.promisify` is useful to convert callback-based functions to promisib
    
 Instead:
 ```javascript:
+const util = require('util');
+const fs = require('fs');
 const stat = util.promisify(fs.stat);
 
 stat('.').then((stats) => {
@@ -14,18 +16,24 @@ stat('.').then((stats) => {
 }).catch((error) => {
   // Handle the error.
 });
+
+// or
+async function callStat() {
+  const stats = await stat('.');
+  console.log(`This directory is owned by ${stats.uid}`);
+}
 ```
 
 Do: 
 ```javascript:
+const fs = require('fs');
 const Promisify = require('promisify.libx.js');
 const p = Promisify.new();
 
-fs.stat('.').then(stats=>{
-  p.resolve(stats);
-}).catch(error => {
-  p.reject(error);
-});
+fs.stat('.', (err, value)=> {
+  if (err) return p.reject(err);
+  p.resolve(value);
+})
 
 const stat = await p;
 ```
