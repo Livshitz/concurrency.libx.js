@@ -2,10 +2,12 @@
 	"extends": "./tsconfig.base.json",
 
 	"compilerOptions": {
-		"module": "AMD",
+		"target": "es2015",
+		"module": "es2015",
 		"resolveJsonModule": false,
-		// "outDir": "./dist/",
-		"outFile": "./dist/concurrency.libx.js",
+		"moduleResolution": "Classic",
+		"outDir": "./dist/",
+		// "outFile": "./dist/concurrency.libx.js",
 	},
 
 	"include": [
