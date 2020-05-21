@@ -2,9 +2,10 @@
 	"extends": "./tsconfig.base.json",
 
 	"compilerOptions": {
-		"module": "UMD",
+		"module": "AMD",
 		"resolveJsonModule": false,
-		"outDir": "./dist/",
+		// "outDir": "./dist/",
+		"outFile": "./dist/concurrency.libx.js",
 	},
 
 	"include": [
