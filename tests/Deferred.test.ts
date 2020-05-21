@@ -1,4 +1,4 @@
-import Deferred from '../src/Deferred';
+import { Deferred } from '../src';
 
 const newPromise = () => {
     var promise = new Deferred();
