@@ -137,7 +137,7 @@ let duration = measurements.measure('test');
 ```
 
 ## WaitUntil:
-[TBD Description]
+Pass a condition and let this helper check periodically for you until the condition is met. You can you `then` or `await` to respond to the complition.
 
 ```javascript:
 let condition = ()=> counter == 10;
