@@ -1,7 +1,7 @@
 {
-    "name": "promisify.libx.js",
+    "name": "concurrency.libx.js",
     "version": "0.2.12",
-    "description": "Promises made easy",
+    "description": "The missing piece for Async programming",
     "main": "./build/index.js",
     "scripts": {
         "start": "tsc -w",

@@ -1,4 +1,6 @@
-import Promisify from './Promisify';
+import Deferred from './Deferred';
 
 // export default Promisify;
-module.exports = Promisify;
+module.exports = {
+    Deferred
+};

@@ -1,9 +1,9 @@
-![Node.js CI](https://github.com/Livshitz/promisify.libx.js/workflows/Node.js%20CI/badge.svg)
+![Node.js CI](https://github.com/Livshitz/concurrency.libx.js/workflows/Node.js%20CI/badge.svg)
 
-# 💄 Promisify.libx.js
+# 💄 concurrency.libx.js
 > Create promises as an object to manually wrap non-promisified functions and avoid callback-hell.
   
-While `util.promisify` is useful to convert callback-based functions to promisibable functions, `promisify.libx.js` is useful to manually manage `resolve` and `reject` operations.
+While `util.promisify` is useful to convert callback-based functions to promisibable functions, `concurrency.libx.js` is useful to manually manage `resolve` and `reject` operations.
    
 Instead:
 ```javascript:
@@ -27,8 +27,8 @@ async function callStat() {
 Do: 
 ```javascript:
 const fs = require('fs');
-const Promisify = require('promisify.libx.js');
-const p = Promisify.new();
+const { Deferred } = require('concurrency.libx.js');
+const p = Deferred.new();
 
 fs.stat('.', (err, value)=> {
   if (err) return p.reject(err);
@@ -40,7 +40,7 @@ const stat = await p;
   
 This approach allows easier to turn deep callback-based functions, spagetti or legacy code, into more modern promisiable code with fewer changes.
 
-`promisify.libx.js` is also browser friendly and supports node versions before 8.
+`concurrency.libx.js` is also browser friendly and supports node versions before 8.
 
 ## Develop:
 
@@ -54,5 +54,5 @@ This approach allows easier to turn deep callback-based functions, spagetti or l
 > ``` $ yarn test ```
 
 ## Usage:
-Check more examples at [tests](tests/promisify.test.ts).
+Check more examples at [tests](tests/Deferred.test.ts).
 

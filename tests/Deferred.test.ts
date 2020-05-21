@@ -1,7 +1,7 @@
-import Promisify from '../src/Promisify';
+import Deferred from '../src/Deferred';
 
 const newPromise = () => {
-    var promise = new Promisify();
+    var promise = new Deferred();
     return promise;
 }
 
@@ -23,14 +23,14 @@ const measure = async (fn: ()=>Promise<any>, name='') => {
 beforeAll(()=> {
 })
 
-test('newPromise-simple', () => {
-	let p = Promisify.new();
+test('deferred-simple', () => {
+	let p = Deferred.new();
 	p.resolve(true);
 	expect(p).resolves.toEqual(true);
 });
 
-test('newPromise-setTimeout', async () => {
-	let p = Promisify.new();
+test('deferred-setTimeout', async () => {
+	let p = Deferred.new();
 	let res = null;
 
 	let dur = await measure(async ()=>{

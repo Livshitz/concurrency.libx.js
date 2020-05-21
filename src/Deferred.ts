@@ -72,6 +72,10 @@ class Deferred<Tvalue, Treason> {
 	promise(): Promise<any> {
 		return this.getPromise();
 	}
+
+	static new() {
+		return new Deferred();
+	}
 }
 
 // module.exports = Deferred;
