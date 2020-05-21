@@ -1,7 +1,7 @@
 ![Node.js CI](https://github.com/Livshitz/concurrency.libx.js/workflows/Node.js%20CI/badge.svg)
 
 # ᭟ concurrency.libx.js
-> Helper functions to deal better with multicuncurrency, parallelism and promises.
+> Helper functions to deal better with multicuncurrency, parallelism and promises. This lib is browser compatible, and nodejs environment.
 
 
 ##### Helpers:  
