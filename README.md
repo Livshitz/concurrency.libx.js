@@ -18,7 +18,7 @@
 
 
 -----
-## - Deferred:
+## Deferred:
 Create promises as an object to manually wrap non-promisified functions and avoid callback-hell.
 	
 While `util.promisify` is useful to convert callback-based functions to promisibable functions, `concurrency.libx.js` is useful to manually manage `resolve` and `reject` operations.
@@ -61,7 +61,7 @@ This approach allows easier to turn deep callback-based functions, spagetti or l
 `concurrency.libx.js` is also browser friendly and supports node versions before 8.
 	
 
-## - Async:
+## Async:
 Dynamically make a sync function async and return a promise. It'll wrap your function with a promise and will allow you treat synchronous functions as asyncs, dynamically.
 
 ```javascript:
@@ -72,7 +72,7 @@ let syncFunc = (arg) => { // synchronous function
 let result = await async(syncFunc); // call it as if it was asynchrounous
 ```
 
-## - IsAsync:
+## IsAsync:
 Determin dynamically if a given function is async or not.
 
 ```javascript:
@@ -80,7 +80,7 @@ isAsync((x)=>x=1); // false
 isAsync(async (x)=>x=1); // true
 ```
 
-## - Debounce:
+## Debounce:
 Make a function that is expected to be called multiple times, to be spread with even intervals. Does not skip any call, just delays them.
 
 ```javascript:
@@ -90,7 +90,7 @@ let func = debounce(()=>{
 func(); // Will make the function to be called with 100ms between each call.
 ```
 
-## - Throttle:
+## Throttle:
 Make a function that is expected to be called multiple times, to be called only once in a given interval. Will skip calls in between.
 
 ```javascript:
@@ -100,7 +100,7 @@ let func = throttle(()=>{
 func(); // The function will be called only once per 20ms, each time one call will be ignored.
 ```
 
-## - Chain:
+## Chain:
 Perform a given array of async functions in a sequence.
 
 ```javascript:
@@ -108,7 +108,7 @@ let tasks = [async ()=>console.log(1), async ()=>console.log(2)];
 await chain.chainTasks(tasks);
 ```
 
-## - Delay:
+## Delay:
 Let the JS VM continue treating other stuff and get back to your block after period passed.   
 Same as setting `setTimeout(fun, dur)` but with avoiding the callback-hell;
 
@@ -118,14 +118,14 @@ await delay(100);
 console.log('after 100ms');
 ```
 
-## - Sleep:
+## Sleep:
 Basically the same as delay, just uses Promise object instead Deferred.
 
 ```javascript:
 await sleep(100);
 ```
 
-## - Measurements:
+## Measurements:
 Helper functions to measure execution times.
 
 ```javascript:
@@ -136,7 +136,7 @@ let duration = measurements.measure('test');
 
 ```
 
-## - WaitUntil:
+## WaitUntil:
 [TBD Description]
 
 ```javascript:
