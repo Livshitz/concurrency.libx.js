@@ -3,9 +3,9 @@
 
 	"compilerOptions": {
 		"target": "es2015",
-		"module": "es2015",
+		"module": "UMD",
 		"resolveJsonModule": false,
-		"moduleResolution": "Classic",
+		"moduleResolution": "Node",
 		"outDir": "./dist/",
 		// "outFile": "./dist/concurrency.libx.js",
 	},
