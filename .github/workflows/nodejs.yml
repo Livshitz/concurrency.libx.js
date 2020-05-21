@@ -29,6 +29,7 @@ jobs:
         scope: '@octocat' # Defaults to the user or organization that owns the workflow file:  
     - run: yarn --frozen-lockfile
     - run: yarn build
+    - run: yarn build-browser
     - run: yarn test
     - run: |
         git config --global push.default simple

@@ -1,0 +1,20 @@
+{
+	"extends": "./tsconfig.base.json",
+
+	"compilerOptions": {
+		"module": "UMD",
+		"resolveJsonModule": false,
+		"outDir": "./dist/",
+	},
+
+	"include": [
+		"./src/**/*.d.ts",
+		"./src/**/*.ts"
+	],
+	"exclude": [
+		"node_modules/**/*",
+		"dist",
+		"build",
+		"tests"
+	]
+}
