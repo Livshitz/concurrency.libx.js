@@ -36,12 +36,12 @@ class Deferred<Tvalue, Treason> {
 		return this._promise;
 	}
 
-	resolve(value: Tvalue): void {
+	resolve(value?: Tvalue): void {
 		this._settled = true;
 		this._resolve(value);
 	}
 
-	reject(reason: Treason): void {
+	reject(reason?: Treason): void {
 		this._settled = true;
 		this._reject(reason);
 	}
