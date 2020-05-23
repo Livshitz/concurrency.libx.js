@@ -6,13 +6,14 @@
 		"module": "UMD",
 		"resolveJsonModule": false,
 		"moduleResolution": "Node",
-		"outDir": "./dist/",
-		// "outFile": "./dist/concurrency.libx.js",
+		// "outDir": "./dist/",
+		"outFile": "./dist/concurrency.libx.js",
 	},
 
 	"include": [
-		"./src/**/*.d.ts",
-		"./src/**/*.ts"
+		// "./src/**/*.d.ts",
+		// "./src/**/*.ts"
+		"./src/browser.ts"
 	],
 	"exclude": [
 		"node_modules/**/*",
