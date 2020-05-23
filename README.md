@@ -78,6 +78,7 @@ This approach allows easier to turn deep callback-based functions, spagetti or l
 Dynamically make a sync function async and return a promise. It'll wrap your function with a promise and will allow you treat synchronous functions as asyncs, dynamically.
 
 ```javascript:
+import { async } from 'concurrency.libx.js';
 let syncFunc = (arg) => { // synchronous function
 	counter = arg;
 	return 10;
@@ -89,6 +90,7 @@ let result = await async(syncFunc); // call it as if it was asynchrounous
 Determin dynamically if a given function is async or not.
 
 ```javascript:
+import { isAsync } from 'concurrency.libx.js';
 isAsync((x)=>x=1); // false
 isAsync(async (x)=>x=1); // true
 ```
@@ -97,6 +99,7 @@ isAsync(async (x)=>x=1); // true
 Make a function that is expected to be called multiple times, to be spread with even intervals. Does not skip any call, just delays them.
 
 ```javascript:
+import { debounce } from 'concurrency.libx.js';
 let func = debounce(()=>{
 	setInterval(()=>console.log('x'), 10);
 }, 100;
@@ -107,6 +110,7 @@ func(); // Will make the function to be called with 100ms between each call.
 Make a function that is expected to be called multiple times, to be called only once in a given interval. Will skip calls in between.
 
 ```javascript:
+import { throttle } from 'concurrency.libx.js';
 let func = throttle(()=>{
 	setInterval(()=>console.log('x'), 10);
 }, 20, true);
@@ -117,6 +121,7 @@ func(); // The function will be called only once per 20ms, each time one call wi
 Perform a given array of async functions in a sequence.
 
 ```javascript:
+import { chain } from 'concurrency.libx.js';
 let tasks = [async ()=>console.log(1), async ()=>console.log(2)];
 await chain.chainTasks(tasks);
 ```
@@ -126,6 +131,7 @@ Let the JS VM continue treating other stuff and get back to your block after per
 Same as setting `setTimeout(fun, dur)` but with avoiding the callback-hell;
 
 ```javascript:
+import { delay } from 'concurrency.libx.js';
 console.log('before');
 await delay(100);
 console.log('after 100ms');
@@ -135,6 +141,7 @@ console.log('after 100ms');
 Basically the same as delay, just uses Promise object instead Deferred.
 
 ```javascript:
+import { sleep } from 'concurrency.libx.js';
 await sleep(100);
 ```
 
@@ -142,6 +149,7 @@ await sleep(100);
 Helper functions to measure execution times.
 
 ```javascript:
+import { measurements } from 'concurrency.libx.js';
 measurements.measure('test');
 await delay(100);
 let duration = measurements.getMeasure('test2');
@@ -153,6 +161,7 @@ let duration = measurements.measure('test');
 Pass a condition and let this helper check periodically for you until the condition is met. You can you `then` or `await` to respond to the complition.
 
 ```javascript:
+import { waitUntil } from 'concurrency.libx.js';
 let condition = ()=> counter == 10;
 let interval = 10; // How often to run the condition check
 await waitUntil(condition, ()=> {
