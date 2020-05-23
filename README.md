@@ -15,6 +15,8 @@ https://cdn.jsdelivr.net/npm/concurrency.libx.js@latest/dist/browser.min.js
 ```
 (Modules are loaded into `window.libx.concurrency` object).
 
+------
+
 ##### Helpers:  
 -[Deferred](#Deferred)  
 -[Async](#Async)  
