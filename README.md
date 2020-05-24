@@ -163,6 +163,7 @@ Pass a condition and let this helper check periodically for you until the condit
 ```javascript:
 import { waitUntil } from 'concurrency.libx.js';
 let condition = ()=> counter == 10;
+setInterval(()=> counter++, 500);
 let interval = 10; // How often to run the condition check
 await waitUntil(condition, ()=> {
 	console.log('condition reached!');
