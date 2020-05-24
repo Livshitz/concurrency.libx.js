@@ -6,14 +6,20 @@ This lib is browser compatible, and nodejs environment.
 
 
 ## Use:
+#### NodeJS:
 ```
 yarn add concurrency.libx.js
 ```
-For browser from CDN:
+Check more examples in unit-test at [tests](tests/).
+
+#### Browser:
 ```
 https://cdn.jsdelivr.net/npm/concurrency.libx.js@latest/dist/browser.min.js
 (Modules are loaded into `window.libx.concurrency` object).
 ```
+Use this library in browser from CDN, [code example](examples/index.html), [live example](https://raw.githack.com/Livshitz/concurrency.libx.js/master/examples/index.html).  
+Or include from node_modules.
+
 
 ------
 
@@ -184,8 +190,4 @@ await waitUntil(condition, ()=> {
 
 ### Run tests:
 > ``` $ yarn test ```
-
-## Usage:
-Use this library in browser from CDN, [code example](examples/index.html), [live example](https://raw.githack.com/Livshitz/concurrency.libx.js/master/examples/index.html).  
-Check more examples in unit-test at [tests](tests/).
 
