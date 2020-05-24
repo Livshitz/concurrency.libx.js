@@ -186,6 +186,6 @@ await waitUntil(condition, ()=> {
 > ``` $ yarn test ```
 
 ## Usage:
-Use this library in browser from CDN, [example](examples/index.html).  
+Use this library in browser from CDN, [code example](examples/index.html), [live example](https://raw.githack.com/Livshitz/concurrency.libx.js/master/examples/index.html).  
 Check more examples in unit-test at [tests](tests/).
 
