@@ -184,5 +184,6 @@ await waitUntil(condition, ()=> {
 > ``` $ yarn test ```
 
 ## Usage:
-Check more examples at [tests](tests/).
+Use this library in browser from CDN, [example](examples/index.html).
+Check more examples in unit-test at [tests](tests/).
 
