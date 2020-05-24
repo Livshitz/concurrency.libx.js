@@ -158,7 +158,7 @@ let duration = measurements.measure('test');
 ```
 
 ## WaitUntil:
-Pass a condition and let this helper check periodically for you until the condition is met. You can you `then` or `await` to respond to the complition.
+Pass a condition and let this helper check periodically for you until the condition is met. You can use `then` or `await` to respond to the complition.
 
 ```javascript:
 import { waitUntil } from 'concurrency.libx.js';
