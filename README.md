@@ -72,7 +72,9 @@ fs.stat('.', (err, value)=> {
 	p.resolve(value);
 })
 
-const stat = await p;
+(async()=>{
+	const stat = await p;
+})();
 ```
 	
 This approach allows easier to turn deep callback-based functions, spagetti or legacy code, into more modern promisiable code with fewer changes.

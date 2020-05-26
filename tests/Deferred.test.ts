@@ -23,3 +23,16 @@ test('deferred-setTimeout', async () => {
 	expect(res).toBe(true);
 	expect(dur).toBeLessThanOrEqual(150);
 });
+
+test('deferred-inNonAsync', () => {
+	const d = new Deferred();
+	let x = 0;
+	let asyncFunc = (async ()=>{
+		setTimeout(()=>{
+			x = 1;
+			d.resolve();
+		}, 100);
+		await d;
+		expect(x).toBe(1);
+	})();
+});
