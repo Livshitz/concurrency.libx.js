@@ -1,9 +1,13 @@
 ![Node.js CI](https://github.com/Livshitz/concurrency.libx.js/workflows/Node.js%20CI/badge.svg)
 
 # ᭟ concurrency.libx.js
-> Helper functions to deal better with multicuncurrency, parallelism and promises.   
+> Helper functions to deal better with multi-concurrency, parallelism and promises.   
 This lib is browser compatible, and nodejs environment.
 
+### Features:
+- **The missing piece in asynchronous programming** - Leverage Promises by manually creating Deferred object (like Promise but with more control).
+- **Advanced utils for concurrent events** - Throttle, debounce, chain and more.
+- **Easily convert synchronous functions to asynchronous** - Dynamically convert functions to async functions.
 
 ## Use:
 #### NodeJS:
@@ -77,7 +81,7 @@ fs.stat('.', (err, value)=> {
 })();
 ```
 	
-This approach allows easier to turn deep callback-based functions, spagetti or legacy code, into more modern promisiable code with fewer changes.
+This approach allows easier to turn deep callback-based functions, spaghetti or legacy code, into more modern promisiable code with fewer changes.
 
 `concurrency.libx.js` is also browser friendly and supports node versions before 8.
 	
@@ -91,7 +95,7 @@ let syncFunc = (arg) => { // synchronous function
 	counter = arg;
 	return 10;
 }
-let result = await async(syncFunc); // call it as if it was asynchrounous
+let result = await async(syncFunc); // call it as if it was asynchronous
 ```
 
 ## IsAsync:
@@ -166,7 +170,7 @@ let duration = measurements.measure('test');
 ```
 
 ## WaitUntil:
-Pass a condition and let this helper check periodically for you until the condition is met. You can use `then` or `await` to respond to the complition.
+Pass a condition and let this helper check periodically for you until the condition is met. You can use `then` or `await` to respond to the completion.
 
 ```javascript:
 import { waitUntil } from 'concurrency.libx.js';
