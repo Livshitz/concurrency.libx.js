@@ -3,6 +3,7 @@
     "version": "0.2.23",
     "description": "The missing piece for Async programming",
     "main": "./build/index.js",
+    "types": "src/index.ts",
     "scripts": {
         "start": "tsc -w",
         "watch": "tsc -w",
