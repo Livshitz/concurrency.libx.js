@@ -18,7 +18,7 @@
  * reject methods, you should export `getPromise` which returns a Promise with
  * the same semantics excluding those methods.
  */
-class Deferred<Tvalue, Treason> {
+class Deferred<Tvalue=any, Treason=any> {
 	_settled: boolean;
 	_promise: Promise<any>;
 	_resolve: (value: Tvalue) => void;
@@ -53,6 +53,14 @@ class Deferred<Tvalue, Treason> {
 	then(onFulfill?: (value: any) => any, onReject?: (error: any) => any): Promise<any> {
 		return Promise.prototype.then.apply(this._promise, arguments);
 	}
+
+	finally(onFinally?: (value:any) => void) {
+		return Promise.prototype.finally.apply(this._promise, arguments);
+	}
+
+	get [Symbol.toStringTag]() {
+		return this.promise.toString();
+	  }
 
 	done(onFulfill?: (value: any) => any, onReject?: (error: any) => any): void {
 		// Embed the polyfill for the non-standard Promise.prototype.done so that
