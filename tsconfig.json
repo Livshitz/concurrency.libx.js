@@ -2,7 +2,7 @@
 	"extends": "./tsconfig.base.json",
 
 	"compilerOptions": {
-		"rootDirs": [ "./build" ],
+		// "rootDirs": [ "./build" ],
 		"baseUrl": "./"
 	},
 
