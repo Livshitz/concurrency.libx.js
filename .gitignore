@@ -17,7 +17,3 @@ yarn.lock
 config.json
 src/pads/queries
 .npmrc
-
-src/**/*.js
-src/**/*.js.map
-src/**/*.d.ts
