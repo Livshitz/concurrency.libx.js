@@ -2,7 +2,7 @@
     "name": "concurrency.libx.js",
     "version": "0.3.2",
     "description": "The missing piece for Async programming",
-    "main": "src/index",
+    "main": "build/index",
     "types": "src/index.ts",
     "scripts": {
         "start": "tsc -w",
