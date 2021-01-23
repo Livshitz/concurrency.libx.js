@@ -1,6 +1,6 @@
 {
     "name": "concurrency.libx.js",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "The missing piece for Async programming",
     "main": "build/index",
     "types": "src/index.ts",
