@@ -31,12 +31,11 @@ jobs:
     - run: yarn build
     - run: yarn build-browser
     - run: yarn test
-    - run: |
-        git config --global push.default simple
+    - name: Bump & Publish
+      if: github.ref == 'refs/heads/master'
+      run: | 
         git config user.email "elya.livshitz@gmail.com"
         git config user.name "Elya Livshitz"
         yarn bump
-        # git commit --amend -m "^ pkg bump ($npm_package_version) [skip ci]"
-        git push origin 
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
