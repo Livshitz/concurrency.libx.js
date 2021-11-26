@@ -3,18 +3,18 @@ import delay from '../src/delay';
 
 
 test('helpers.measure-positive', async () => {
-	measurements.measure('test');
+	measurements.startMeasure('test');
 	await delay(100);
-	let output = measurements.measure('test');
+	let output = measurements.startMeasure('test');
 	await delay(100);
 	expect(output).toBeLessThanOrEqual(150);
-	output = measurements.measure('test');
+	output = measurements.startMeasure('test');
 	expect(output).toBeLessThanOrEqual(250);
 });
 
 test('helpers.getMeasure-positive', async () => {
-	measurements.measure('test2');
+	measurements.startMeasure('test2');
 	await delay(100);
-	let output = measurements.getMeasure('test2');
+	let output = measurements.peekMeasure('test2');
 	expect(output).toBeLessThanOrEqual(120);
 });
