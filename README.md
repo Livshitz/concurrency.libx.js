@@ -162,11 +162,15 @@ Helper functions to measure execution times.
 
 ```javascript:
 import { measurements } from 'concurrency.libx.js';
-measurements.measure('test');
+measurements.startMeasure('test');
 await delay(100);
-let duration = measurements.getMeasure('test2');
-let duration = measurements.measure('test');
+let duration = measurements.peekMeasure('test2');
+let duration = measurements.startMeasure('test');
 
+// or:
+let duration = measurements.measure(async ()=>{
+	await delay(100);
+});
 ```
 
 ## WaitUntil:
