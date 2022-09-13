@@ -1,10 +1,10 @@
-const throttle = (func, wait, immediate = true) => {
+const throttle = (func, wait, immediate = true, allowTriallingCall = true) => {
 	var timeout;
 	return function() {
 		var context = this, args = arguments;
 		var later = function() {
 			timeout = null;
-			if (!immediate) func.apply(context, args);
+			if (!immediate || allowTriallingCall) func.apply(context, args);
 		};
 		
 		if (timeout != null) return;

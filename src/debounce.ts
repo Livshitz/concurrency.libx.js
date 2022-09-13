@@ -1,10 +1,10 @@
-const debounce = (func, wait, immediate = false, allowTaillingCall = true) => {
+const debounce = (func, wait, immediate = false, allowTriallingCall = true) => {
 	var timeout;
 	return function() {
 		var context = this, args = arguments;
 		var later = function() {
 			timeout = null;
-			if (allowTaillingCall) func.apply(context, args);
+			if (allowTriallingCall) func.apply(context, args);
 		};
 		var callNow = immediate && !timeout;
 		clearTimeout(timeout);
