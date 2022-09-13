@@ -1,4 +1,4 @@
-const throttle = (func, wait, immediate = true, allowTriallingCall = true) => {
+const throttle = (func, wait, immediate = true, allowTriallingCall = false) => {
 	var timeout;
 	return function() {
 		var context = this, args = arguments;

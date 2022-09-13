@@ -7,7 +7,7 @@ test('helpers.throttle-positive', async () => {
 	let throttleMS = 50;
 	let func = throttle(()=>{
 		track.push(counter++)
-	}, throttleMS, true);
+	}, throttleMS, true, false);
 	let tickEachMs = 10;
 	let ticksToCount = 10;
 	let interval = setInterval(func, tickEachMs);
