@@ -1,6 +1,6 @@
 {
     "name": "concurrency.libx.js",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "The missing piece for Async programming",
     "main": "build/index",
     "types": "src/index.ts",
@@ -10,6 +10,7 @@
         "build": "tsc",
         "build-browser": "npx -p pax.libx.js pax-browserify src/browser.ts dist -y --minify",
         "test": "jest --detectOpenHandles --runInBand",
+        "test:debug": "node --inspect ./node_modules/jest/bin/jest.js --runInBand --colors --verbose",
         "test:ci": "jest --ci --reporters=default --reporters=jest-junit --coverage --coverageReporters=cobertura --coverageReporters=html",
         "bump": "yarn version --patch && git push --tags && yarn publish . --tag latest && git push && echo \"Successfully released version $npm_package_version!\""
     },

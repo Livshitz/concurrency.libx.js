@@ -8,6 +8,7 @@ import * as measurements from './measurements';
 import * as chain from './chain';
 import sleep from './sleep';
 import async from './async';
+import { concurrent } from './concurrent';
 
 export {
     Deferred,
@@ -20,6 +21,7 @@ export {
     chain,
     sleep,
     async,
+    concurrent,
 };
 // module.exports = {
 //     Deferred,
