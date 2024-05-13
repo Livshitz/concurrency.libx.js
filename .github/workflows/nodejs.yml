@@ -21,21 +21,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: oven-sh/setup-bun@v1
     # Setup .npmrc file to publish to npm
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
         registry-url: 'https://registry.npmjs.org'
         scope: '@octocat' # Defaults to the user or organization that owns the workflow file:  
-    - run: yarn --frozen-lockfile
-    - run: yarn build
-    - run: yarn build-browser
-    - run: yarn test
+    - run: bun run build
+    - run: bun run build-browser
+    - run: bun run test
     - name: Bump & Publish
       if: github.ref == 'refs/heads/master'
       run: | 
         git config user.email "elya.livshitz@gmail.com"
         git config user.name "Elya Livshitz"
-        yarn bump
+        bun run bump
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
