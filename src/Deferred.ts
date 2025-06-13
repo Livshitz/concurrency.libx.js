@@ -17,12 +17,20 @@
  * If you want to export the Promise without exposing access to the resolve and
  * reject methods, you should export `getPromise` which returns a Promise with
  * the same semantics excluding those methods.
+ *
+ * Note: Requires ES2018+ for async iterator and Promise.finally support.
  */
-class Deferred<Tvalue=any, Treason=any> {
+class Deferred<Tvalue=any, Treason=any, TProgress=any> implements AsyncIterable<TProgress> {
 	_settled: boolean;
 	_promise: Promise<any>;
 	_resolve: (value: Tvalue) => void;
 	_reject: (reason: Treason) => void;
+
+	// Progress support
+	_progressHandlers: Array<(progress: TProgress) => void> = [];
+	_progressQueue: TProgress[] = [];
+	_progressResolvers: Array<(value: IteratorResult<TProgress>) => void> = [];
+	_progressDone: boolean = false;
 
 	constructor() {
 		this._settled = false;
@@ -38,12 +46,56 @@ class Deferred<Tvalue=any, Treason=any> {
 
 	resolve(value?: Tvalue): void {
 		this._settled = true;
+		this._finishProgress();
 		this._resolve(value);
 	}
 
 	reject(reason?: Treason): void {
 		this._settled = true;
+		this._finishProgress();
 		this._reject(reason);
+	}
+
+	// Progress API
+	onProgress(handler: (progress: TProgress) => void): void {
+		this._progressHandlers.push(handler);
+	}
+
+	reportProgress(progress: TProgress): void {
+		// Notify callbacks
+		for (const handler of this._progressHandlers) {
+			handler(progress);
+		}
+		// Notify async iterator
+		if (this._progressResolvers.length) {
+			this._progressResolvers.shift()!({ value: progress, done: false });
+		} else {
+			this._progressQueue.push(progress);
+		}
+	}
+
+	private _finishProgress() {
+		this._progressDone = true;
+		while (this._progressResolvers.length) {
+			this._progressResolvers.shift()!({ value: undefined, done: true });
+		}
+	}
+
+	// Async iterator for progress events
+	async *[Symbol.asyncIterator](): AsyncIterator<TProgress> {
+		while (!this._progressDone || this._progressQueue.length) {
+			if (this._progressQueue.length) {
+				const value = this._progressQueue.shift();
+				if (value !== undefined) yield value;
+			} else if (this._progressDone) {
+				break;
+			} else {
+				const value = await new Promise<TProgress>((resolve) => {
+					this._progressResolvers.push(({ value }) => resolve(value as TProgress));
+				});
+				if (value !== undefined) yield value;
+			}
+		}
 	}
 
 	catch(onReject?: (error: any) => any): Promise<any> {
@@ -54,13 +106,14 @@ class Deferred<Tvalue=any, Treason=any> {
 		return Promise.prototype.then.apply(this._promise, arguments);
 	}
 
+	// Note: Promise.finally requires ES2018 or later
 	finally(onFinally?: (value:any) => void) {
 		return Promise.prototype.finally.apply(this._promise, arguments);
 	}
 
 	get [Symbol.toStringTag]() {
 		return this.promise.toString();
-	  }
+	}
 
 	done(onFulfill?: (value: any) => any, onReject?: (error: any) => any): void {
 		// Embed the polyfill for the non-standard Promise.prototype.done so that
@@ -81,8 +134,8 @@ class Deferred<Tvalue=any, Treason=any> {
 		return this.getPromise();
 	}
 
-	static new() {
-		return new Deferred();
+	static new<Tvalue=any, Treason=any, TProgress=any>() {
+		return new Deferred<Tvalue, Treason, TProgress>();
 	}
 }
 

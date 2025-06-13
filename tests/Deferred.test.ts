@@ -36,3 +36,36 @@ test('deferred-inNonAsync', () => {
 		expect(x).toBe(1);
 	})();
 });
+
+test('deferred-onProgress callback', async done => {
+	const d = Deferred.new<number, Error, number>();
+	let progressEvents: number[] = [];
+
+	d.onProgress((progress) => {
+		progressEvents.push(progress);
+		if (progress === 2) {
+			d.resolve(42);
+		}
+	});
+	d.reportProgress(1);
+	setTimeout(() => d.reportProgress(2), 10);
+	d.promise().then(result => {
+		expect(result).toBe(42);
+		expect(progressEvents).toEqual([1,2]);
+		done();
+	});
+});
+
+test('deferred async iterator for progress', async () => {
+	const d = Deferred.new<number, Error, string>();
+	const received: string[] = [];
+	setTimeout(() => d.reportProgress('a'), 10);
+	setTimeout(() => d.reportProgress('b'), 20);
+	setTimeout(() => d.resolve(123), 30);
+
+	for await (const progress of d) {
+		received.push(progress);
+	}
+	// After resolve, iterator should end
+	expect(received).toEqual(['a', 'b']);
+});

@@ -43,7 +43,37 @@ Or include from node_modules.
 -----
 ## Deferred:
 Create promises as an object to manually wrap non-promisified functions and avoid callback-hell.
-	
+
+**New in vNext:**
+- Supports progress reporting via both `onProgress` callback and async iterator (`for await...of`).
+- Requires ES2018+ for async iterator and `Promise.finally` support.
+
+### Progress Reporting (onProgress)
+```javascript
+const { Deferred } = require('concurrency.libx.js');
+const d = Deferred.new();
+d.onProgress((progress) => {
+  console.log('Progress:', progress);
+});
+d.reportProgress(0.1);
+d.reportProgress(0.5);
+d.resolve('done');
+```
+
+### Progress Reporting (Async Iterator)
+```javascript
+const d = Deferred.new();
+(async () => {
+  for await (const progress of d) {
+    console.log('Progress (iterator):', progress);
+  }
+  console.log('Progress stream ended');
+})();
+d.reportProgress(0.1);
+d.reportProgress(0.5);
+d.resolve('done');
+```
+
 While `util.promisify` is useful to convert callback-based functions to promisibable functions, `concurrency.libx.js` is useful to manually manage `resolve` and `reject` operations.
 	 
 Instead:
